@@ -34,5 +34,47 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <main class="container">
+      <form id="registrationForm">
+        <h2>Inscription</h2>
+
+        <!-- Nom -->
+        <div class="form-group">
+          <label for="lastName">Nom:</label>
+          <div class="input-icon">
+            <i class="bx bx-user"></i>
+            <input type="text" id="lastName" name="lastName" />
+          </div>
+          <span class="error" id="lastNameError"></span>
+        </div>
+
+        <!-- Prenom -->
+        <div class="form-group">
+          <label for="firstName">Prénom:</label>
+          <div class="input-icon">
+            <i class="bx bx-user"></i>
+            <input type="text" id="firstName" name="firstName" />
+          </div>
+          <span class="error" id="firstNameError"></span>
+        </div>
+
+        <!-- Téléphone -->
+        <div class="form-group">
+          <label for="phone">Téléphone:</label>
+          <div class="input-icon">
+            <i class="bx bx-phone"></i>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <span class="error" id="phoneError"></span>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <button type="submit"><i class="bx bx-check"></i> S'inscrire</button>
+      </form>
+    </main>
+
+    <!-- Message de confirmation -->
+    <div id="confirmationMessage" class="confirmationMessage"></div>
+    <script src="script.js"></script>
   </body>
 </html>
