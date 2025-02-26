@@ -537,6 +537,7 @@ footer {
 h2 {
   display: block;
   font-size: 1.5em;
+  color: #b80760;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
   margin-inline-start: 0px;
@@ -550,7 +551,8 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: semibold;
+  color: #a3407b;
 }
 
 .input-icon {
@@ -583,6 +585,11 @@ input.error {
   font-size: 0.8em;
   margin-top: 5px;
   display: block;
+}
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px; /* Adjust as needed */
 }
 
 button {
@@ -829,12 +836,12 @@ input,
 textarea {
   font-family: "Poppins", sans-serif;
 }
-.container-contact {
+#container-contact {
   position: relative;
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #f4f1f2;
+  background-color: none;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -851,150 +858,114 @@ textarea {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-
+/* Style de base pour le formulaire */
 .contact-form {
-  background-color: #e0a2ce;
   position: relative;
+  max-width: 800px;
+
+  padding: 2.3rem 2.2rem;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
+/* Cercles décoratifs */
 .circle {
   position: absolute;
+  background: linear-gradient(45deg, #e34a8a, #a3407b);
   border-radius: 50%;
-  background: linear-gradient(135deg, transparent 20%, #b34c5d);
-}
-.circle.one {
-  width: 130px;
-  height: 130px;
-  top: 130px;
-  right: -40px;
-}
-.circle.two {
-  width: 80px;
-  height: 80px;
-  top: 10px;
-  right: 30px;
-}
-.contact-form::before {
-  content: "";
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  background-color: #e0a2ce;
-  transform: rotate(45deg);
-  top: 50px;
-  left: -13px;
-}
-form {
-  padding: 2.3rem 2.2rem;
-  z-index: 10;
-  overflow: hidden;
-  position: relative;
-}
-.title {
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 0.7rems;
-}
-.input-container {
-  position: relative;
-  margin: 1rem 0;
 }
 
+.circle.one {
+  width: 150px;
+  height: 150px;
+  top: -75px;
+  left: -75px;
+}
+
+.circle.two {
+  width: 100px;
+  height: 100px;
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Titre du formulaire */
+.title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Conteneur des champs de formulaire */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Style des champs de formulaire */
 .input {
   width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
   outline: none;
-  border: 2px solid #fafafa;
-  background: none;
-  padding: 0.6rem 1.2rem;
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  border-radius: 25px;
-  transition: 0.3s;
+  transition: border-color 0.3s ease;
 }
-textarea.input {
-  padding: 0.8rem 1.2rem;
-  min-height: 150px;
-  border-radius: 30px;
-  resize: none;
-  overflow-y: auto;
+
+.input:focus {
+  border-color: #d1afaf;
 }
+
+/* Style des labels */
 .input-container label {
   position: absolute;
   top: 50%;
-  left: 15px;
+  left: 10px;
   transform: translateY(-50%);
-  padding: 0 0.4rem;
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 400;
+  background: #ffffff;
+  padding: 0 5px;
+  color: #565151;
+  transition: all 0.3s ease;
   pointer-events: none;
-  z-index: 1000;
-  transition: 0.5s;
 }
-.input-container.textarea label {
-  top: 1rem;
-  transform: translateY(0);
+
+.input-container.focus label,
+.input:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
+  color: #b87ca5;
 }
+
+/* Style pour le textarea */
+.input-container.textarea {
+  height: 100px;
+}
+
+.input-container.textarea textarea {
+  height: 100%;
+  resize: none;
+}
+
+/* Style du bouton d'envoi */
 .btn {
-  padding: 0.6rem 1.3rem;
-  background-color: #fff;
-  border: 2px solid #c9c5c6;
-  font-size: 0.95rem;
-  color: #e0a2ce;
-  line-height: 1;
-  border-radius: 25px;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 0;
-}
-.btn:hover {
-  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background: #d872a3;
   color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
-.input-container span {
-  position: absolute;
-  top: 0;
-  left: 25px;
-  transform: translateY(-50%);
-  color: transparent;
-  pointer-events: none;
-  padding: 0 0.4rem;
-  font-size: 0.8rem;
-  z-index: 500;
-}
-.input-container span:before,
-.input-container span:after {
-  content: "";
-  position: absolute;
-  width: 10%;
-  opacity: 0;
-  transition: 0.3s;
-  height: 5px;
-  background-color: #dea1c9;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.input-container span:before {
-  left: 50%;
-}
-.input-container span:after {
-  right: 50%;
-}
-.input-container.focus label {
-  top: 0;
-  transform: translateY(-50%);
-  left: 25px;
-  font-size: 0.8rem;
-}
-.input-container.focus span:before,
-.input-container.focus span:after {
-  width: 50%;
-  opacity: 1;
+
+.btn:hover {
+  background: #4b0924;
 }
 .icon {
   width: 28px;
@@ -1009,7 +980,7 @@ textarea.input {
   padding: 0.5rem 0;
 }
 .text {
-  color: #141314;
+  color: #3b283b;
   margin: 1.5rem 0 2rem o;
 }
 .information {
@@ -1074,6 +1045,7 @@ textarea.input {
   top: calc(50% - 180px);
   left: calc(50% - 180px);
 }
+
 /* Responsive media query */
 @media (max-width: 768px) {
   .container-contact {

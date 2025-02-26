@@ -1,98 +1,99 @@
-//  pour la validation du formulaire d'inscription===================
-//! Récupérer les éléments du formulaire et des messages d'erreur
-const form = document.getElementById("registrationForm");
-
-const lastNameInput = document.getElementById("lastName");
-const firstNameInput = document.getElementById("firstName");
-const phoneInput = document.getElementById("phone");
+const form = document.getElementById("contactform");
+const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
-
-const lastNameError = document.getElementById("lastNameError");
-const firstNameError = document.getElementById("firstNameError");
-const phoneError = document.getElementById("phoneError");
+const phoneInput = document.getElementById("phone");
+const nameError = document.getElementById("nameError");
 const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+const messageError = document.getElementById("message"); // Assuming you add an ID for message error
+const allInputs = document.querySelectorAll(".input-container");
 
-const confirmationMessage = document.getElementById("confirmationMessage");
+function validateForm() {
+  let isValid = true;
 
-//! Fonction pour valider le champ "Nom"
-function validateLastName() {
-  const lastName = lastNameInput.value;
-  if (lastName === "" || lastName.length < 3) {
-    lastNameError.textContent =
-      "Le nom est obligatoire et doit contenir au moins 3 caractères.";
-    return false; // Validation échouée
-  }
-  lastNameInput.style.border = "2px solid #9F2E2B";
-  lastNameError.textContent = ""; // Réinitialiser le message d'erreur si valide
-  return true; // Validation réussie
-}
-
-//! Fonction pour valider le champ "Prénom"
-function validateFirstName() {
-  const firstName = firstNameInput.value;
-  if (firstName === "" || firstName.length < 3) {
-    firstNameError.textContent = "Le prénom est obligatoire.";
-    return false; // Validation échouée
-  }
-  firstNameInput.style.border = "2px solid #9F2E2B";
-  firstNameError.textContent = ""; // Réinitialiser le message d'erreur si valide
-  return true; // Validation réussie
-}
-
-//! Fonction pour valider le champ "Email"
-function validateemail() {
-  const email = emailInput.value;
-  if (email === "" || email.length < 3) {
-    emailError.textContent = "Le mail est obligatoire.";
-    return false; // Validation échouée
-  }
-  emailInput.style.border = "2px solid #9F2E2B";
-  emailError.textContent = ""; // Réinitialiser le message d'erreur si valide
-  return true; // Validation réussie
-}
-
-//! Fonction pour valider le champ "Téléphone"
-function validatePhone() {
-  const phoneValue = phoneInput.value;
-  if (phoneValue === "" || phoneValue.length < 8) {
-    phoneError.textContent = "Le numéro de téléphone est obligatoire.";
-
-    return false; // Validation échouée
-  }
-  phoneInput.style.border = "2px solid #9F2E2B";
-  phoneError.textContent = ""; // Réinitialiser le message d'erreur si valide
-  return true; // Validation réussie
-}
-
-//! Fonction pour afficher un message de confirmation
-function displayConfirmation(isValid) {
-  if (isValid) {
-    // Afficher le message de confirmation, si tous les champs sont valides
-    confirmationMessage.textContent = "Inscription réussie !";
-    confirmationMessage.style.color = "#9F2E2B";
+  if (nameInput.value.trim() === "") {
+    nameError.textContent = "Le nom est requis.";
+    nameInput.classList.add("error");
+    isValid = false;
   } else {
-    // Afficher un message d'erreur, si un ou plusieurs champs sont invalides
-    confirmationMessage.textContent =
-      "Veuillez corriger les erreurs ci-dessus.";
-    confirmationMessage.style.color = "#9F2E2B";
+    nameError.textContent = "";
+    nameInput.classList.remove("error");
   }
+
+  if (emailInput.value.trim() === "") {
+    emailError.textContent = "L'email est requis.";
+    emailInput.classList.add("error");
+    isValid = false;
+  } else if (!isValidEmail(emailInput.value)) {
+    emailError.textContent = "L'email n'est pas valide.";
+    emailInput.classList.add("error");
+    isValid = false;
+  } else {
+    emailError.textContent = "";
+    emailInput.classList.remove("error");
+  }
+
+  if (phoneInput.value.trim() === "") {
+    phoneError.textContent = "Le numéro de téléphone est requis.";
+    phoneInput.classList.add("error");
+    isValid = false;
+  } else if (!isValidPhone(phoneInput.value)) {
+    // Add phone validation
+    phoneError.textContent = "Le numéro de téléphone n'est pas valide.";
+    phoneInput.classList.add("error");
+    isValid = false;
+  } else {
+    phoneError.textContent = "";
+    phoneInput.classList.remove("error");
+  }
+
+  // Validate message (if needed - you might not require it)
+  // if (messageInput.value.trim() === "") {
+  //   messageError.textContent = "Le message est requis.";
+  //   isValid = false;
+  // } else {
+  //   messageError.textContent = "";
+  // }
+
+  return isValid;
 }
 
-//! Ajouter un écouteur d'événements sur la soumission du formulaire
+function isValidEmail(email) {
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isValidPhone(phone) {
+  // Basic phone validation regex (you can customize this)
+  const phoneRegex = /^\d{10}$/; // Example: 10 digits
+  return phoneRegex.test(phone);
+}
+
 form.addEventListener("submit", function (event) {
-  // Empêcher l'envoi du formulaire
-  event.preventDefault();
+  event.preventDefault(); // Prevent form submission
 
-  // Valider chaque champ
-  const isLastNameValid = validateLastName();
-  const isFirstNameValid = validateFirstName();
-  const isPhoneValid = validatePhone();
-  const emailvalid = validateemail();
+  if (validateForm()) {
+    // Form is valid, display confirmation and potentially submit data
+    alert("Message envoyé !"); // Or a nicer modal/message
+    form.reset(); // Clear the form
+    allInputs.forEach((input) => {
+      input.classList.remove("focus");
+    });
+  } else {
+    // Form is invalid, errors are displayed
+  }
+});
 
-  // Vérifier si tous les champs sont valides
-  const isFormValid =
-    isLastNameValid && isFirstNameValid && isPhoneValid && emailvalid;
-
-  // Afficher le message de confirmation en fonction de la validation
-  displayConfirmation(isFormValid);
+// Add focus/blur listeners for styling (optional, but improves UX)
+allInputs.forEach((input) => {
+  const inputElement = input.querySelector(".input");
+  inputElement.addEventListener("focus", () => {
+    input.classList.add("focus");
+  });
+  inputElement.addEventListener("blur", () => {
+    if (inputElement.value.trim() === "") {
+      input.classList.remove("focus");
+    }
+  });
 });

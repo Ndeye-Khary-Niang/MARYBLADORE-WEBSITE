@@ -1,114 +1,65 @@
-// Récupérer les éléments du formulaire
-const form = document.querySelector("form");
-const nameInput = document.querySelector('input[name="name"]');
-const emailInput = document.querySelector('input[name="email"]');
-const phoneInput = document.querySelector('input[name="phone"]');
-const messageInput = document.querySelector('textarea[name="message"]');
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactform");
 
-// Fonction pour valider le champ "Nom"
-function validateName() {
-  const nameValue = nameInput.value.trim();
-  const nameError = nameInput.parentElement.querySelector("span");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Empêche l'envoi par défaut
 
-  if (nameValue === "") {
-    nameError.textContent = "Le nom est obligatoire";
-    return false;
-  } else if (nameValue.length < 3) {
-    nameError.textContent = "Le nom doit contenir au moins 3 caractères";
-    return false;
-  } else {
-    nameError.textContent = "";
-    return true;
-  }
-}
+    // Récupération des champs
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-// Fonction pour valider le champ "Email"
-function validateEmail() {
-  const emailValue = emailInput.value.trim();
-  const emailError = emailInput.parentElement.querySelector("span");
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Vérification des champs
+    if (name === "" || email === "" || phone === "" || message === "") {
+      alert("Veuillez remplir tous les champs.");
+      return;
+    }
 
-  if (emailValue === "") {
-    emailError.textContent = "L'email est obligatoire";
-    return false;
-  } else if (!emailRegex.test(emailValue)) {
-    emailError.textContent = "Veuillez entrer un email valide";
-    return false;
-  } else {
-    emailError.textContent = "";
-    return true;
-  }
-}
+    // Vérification du format de l'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Veuillez entrer une adresse email valide.");
+      return;
+    }
 
-// Fonction pour valider le champ "Telephone"
-function validatePhone() {
-  const phoneValue = phoneInput.value.trim();
-  const phoneError = phoneInput.parentElement.querySelector("span");
-  const phoneRegex = /^[0-9]{10}$/;
+    // Vérification du format du téléphone (exemple pour les numéros à 9 chiffres)
+    const phoneRegex = /^\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      alert("Veuillez entrer un numéro de téléphone valide à 9 chiffres.");
+      return;
+    }
 
-  if (phoneValue === "") {
-    phoneError.textContent = "Le téléphone est obligatoire";
-    return false;
-  } else if (!phoneRegex.test(phoneValue)) {
-    phoneError.textContent =
-      "Veuillez entrer un numéro de téléphone valide (10 chiffres)";
-    return false;
-  } else {
-    phoneError.textContent = "";
-    return true;
-  }
-}
-
-// Fonction pour valider le champ "Message"
-function validateMessage() {
-  const messageValue = messageInput.value.trim();
-  const messageError = messageInput.parentElement.querySelector("span");
-
-  if (messageValue === "") {
-    messageError.textContent = "Le message est obligatoire";
-    return false;
-  } else if (messageValue.length < 10) {
-    messageError.textContent =
-      "Le message doit contenir au moins 10 caractères";
-    return false;
-  } else {
-    messageError.textContent = "";
-    return true;
-  }
-}
-
-// Fonction pour afficher un message de confirmation
-function showConfirmation() {
-  const confirmationMessage = document.createElement("div");
-  confirmationMessage.classList.add("confirmation-message");
-  confirmationMessage.textContent = "Formulaire envoyé avec succès !";
-  form.appendChild(confirmationMessage);
-
-  // Masquer le message après 3 secondes
-  setTimeout(() => {
-    confirmationMessage.remove();
-  }, 3000);
-}
-
-// Ajouter un écouteur d'événements sur la soumission du formulaire
-form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Empêcher l'envoi du formulaire
-
-  // Valider tous les champs
-  const isNameValid = validateName();
-  const isEmailValid = validateEmail();
-  const isPhoneValid = validatePhone();
-  const isMessageValid = validateMessage();
-
-  // Si tous les champs sont valides, afficher le message de confirmation
-  if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
-    showConfirmation();
-    form.reset(); // Réinitialiser le formulaire
-  }
+    // Affichage d'un message de confirmation
+    alert("Votre message a été envoyé avec succès !");
+    form.reset(); // Réinitialisation du formulaire
+  });
 });
 
-// Ajouter des écouteurs d'événements pour valider les champs en temps réel
-nameInput.addEventListener("input", validateName);
-emailInput.addEventListener("input", validateEmail);
-phoneInput.addEventListener("input", validatePhone);
-messageInput.addEventListener("input", validateMessage);
+// ======================
+// page des produits============
+document.addEventListener("DOMContentLoaded", function () {
+  const quantityInput = document.querySelector(".quantite input");
+  const priceElement = document.querySelector(".price");
+  const originalPrice = 2000;
+  const oldPrice = 2500;
+  const addToCartBtn = document.querySelector(".add-card-btn");
+
+  // Met à jour le prix total en fonction de la quantité
+  quantityInput.addEventListener("input", function () {
+    let quantity = parseInt(quantityInput.value);
+    if (isNaN(quantity) || quantity < 1) {
+      quantity = 1;
+      quantityInput.value = 1;
+    }
+    const newPrice = originalPrice * quantity;
+    const newOldPrice = oldPrice * quantity;
+    priceElement.innerHTML = `${newPrice} <del>${newOldPrice}</del>`;
+  });
+
+  // Ajoute un effet de confirmation lors de l'ajout au panier
+  addToCartBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    alert("Produit ajouté au panier avec succès !");
+  });
+});
