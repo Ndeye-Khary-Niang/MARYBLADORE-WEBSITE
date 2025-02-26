@@ -14,6 +14,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <!-- poppins font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +34,7 @@
     <!-- navigation -->
     <nav class="navigation">
       <!-- logo -->
-      <a href="#" class="logo"><img src="/images/logo mb.png" /></a>
+      <a href="index.html" class="logo"><img src="/images/logo mb.png" /></a>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="produits.html">Produits</a></li>
@@ -34,5 +42,115 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- ============page des produits======= -->
+    <section id="product-details">
+      <!-- img -->
+      <div class="d-product-img">
+        <img src="/images/10.jpg" alt="" />
+      </div>
+      <!-- text -->
+      <div class="d-product-text">
+        <!-- categorie -->
+        <span class="category"> Cosmetique>champoing</span>
+        <!-- title -->
+        <strong>Hair growth</strong>
+        <!-- raiting -->
+        <span class="rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <span> 150 Avis</span>
+        </span>
+        <!-- details -->
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+          magnam iusto doloremque quos assumenda?
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui eveniet
+          perspiciatis eaque cupiditate numquam?
+        </p>
+        <!-- price -->
+        <span class="price"> 2000 <del>2500</del></span>
+        <!-- quantite -->
+        <div class="quantite">
+          <span>Quantite</span>
+          <input type="number" min="1" value="1" />
+        </div>
+        <!-- ajouter au panier -->
+        <a href="#" class="add-card-btn">Ajouter au panier</a>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <!-- compagnie-box -->
+        <div class="footer-compagnie-box">
+          <!-- logo -->
+          <a href="#" class="footer-logo"><img src="/images/logo mb.png" /></a>
+          <!-- details -->
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa
+            incidunt unde quo repudiandae dolore, veniam provident reprehenderit
+            numquam. Quisquam, quod.
+          </p>
+          <!-- social -->
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- bottom -->
+      <div class="footer-botom">
+        <span class="footer-owner">Made By Ndeye Khary Niang </span>
+        <span class="copyright">© Copyright 2025 - NKN </span>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navToggle = document.createElement("div");
+        navToggle.classList.add("nav-toggle");
+        navToggle.innerHTML = "&#9776;";
+        document.querySelector(".navigation").appendChild(navToggle);
+
+        navToggle.addEventListener("click", function () {
+          const navUl = document.querySelector(".navigation ul");
+          navUl.classList.toggle("active");
+        });
+      });
+    </script>
+    <script src="script.js"></script>
   </body>
 </html>

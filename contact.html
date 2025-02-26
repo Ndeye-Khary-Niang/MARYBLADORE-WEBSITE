@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <!-- poppins font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,5 +38,137 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- fin de navigation -->
+    <div class="container-contact">
+      <span class="big-circle"></span>
+      <div class="form-c">
+        <div class="contact-info">
+          <h3 class="title">Restons en contact</h3>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
+            recusandae consequatur eius vero fugit.
+          </p>
+          <div class="info">
+            <div class="information">
+              <img src="/images/i1.jpg" class="icon" alt="" />
+              <p>NKN, Yeumbeul/Dakar/Senegal</p>
+            </div>
+            <div class="information">
+              <img src="/images/i3.jpg" class="icon" alt="" />
+              <p>Ndeyekharyniang11@gmail.com</p>
+            </div>
+            <div class="information">
+              <img src="/images/i2.jpg" class="icon" alt="" />
+              <p>77-532-30-82</p>
+            </div>
+          </div>
+          <div class="social-media">
+            <p>Rejoignez-nous</p>
+            <div class="social-icon">
+              <a href="#"> <i class="fab fa-facebook-f"></i> </a>
+              <a href="#"> <i class="fab fa-twitter"></i> </a>
+              <a href="#"> <i class="fab fa-instagram"></i> </a>
+              <a href="#"> <i class="fab fa-youtube"></i> </a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+          <form action="#">
+            <h3 class="title">Contactez-Nous</h3>
+            <div class="input-container focus">
+              <input type="text" name="name" class="input" />
+              <label for="">Nom</label>
+              <span>Nom</span>
+            </div>
+            <div class="input-container focus">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container focus">
+              <input type="tel" name="phone" class="input" />
+              <label for="">Telephone</label>
+              <span>Telephone</span>
+            </div>
+            <div class="input-container texarea focus">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <!-- compagnie-box -->
+        <div class="footer-compagnie-box">
+          <!-- logo -->
+          <a href="#" class="footer-logo"><img src="/images/logo mb.png" /></a>
+          <!-- details -->
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa
+            incidunt unde quo repudiandae dolore, veniam provident reprehenderit
+            numquam. Quisquam, quod.
+          </p>
+          <!-- social -->
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- bottom -->
+      <div class="footer-botom">
+        <span class="footer-owner">Realisé par Ndeye Khary Niang </span>
+        <span class="copyright">© Copyright 2025 - NKN </span>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navToggle = document.createElement("div");
+        navToggle.classList.add("nav-toggle");
+        navToggle.innerHTML = "&#9776;";
+        document.querySelector(".navigation").appendChild(navToggle);
+
+        navToggle.addEventListener("click", function () {
+          const navUl = document.querySelector(".navigation ul");
+          navUl.classList.toggle("active");
+        });
+      });
+    </script>
+    <script src="script1.js"></script>
   </body>
 </html>

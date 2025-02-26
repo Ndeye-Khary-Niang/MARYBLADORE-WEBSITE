@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <!-- poppins font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,6 +38,8 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- fin de navigation -->
+    <!-- compte -->
     <main class="container">
       <form id="registrationForm">
         <h2>Inscription</h2>
@@ -58,6 +64,15 @@
           <span class="error" id="firstNameError"></span>
         </div>
 
+        <!-- mail -->
+        <div class="form-group">
+          <label for="email">email:</label>
+          <div class="input-icon">
+            <i class="bx bx-envelope"></i>
+            <input type="email" id="email" name="email" />
+          </div>
+          <span class="error" id="emailError"></span>
+        </div>
         <!-- Téléphone -->
         <div class="form-group">
           <label for="phone">Téléphone:</label>
@@ -75,6 +90,74 @@
 
     <!-- Message de confirmation -->
     <div id="confirmationMessage" class="confirmationMessage"></div>
+    <footer>
+      <div class="footer-container">
+        <!-- compagnie-box -->
+        <div class="footer-compagnie-box">
+          <!-- logo -->
+          <a href="#" class="footer-logo"><img src="/images/logo mb.png" /></a>
+          <!-- details -->
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa
+            incidunt unde quo repudiandae dolore, veniam provident reprehenderit
+            numquam. Quisquam, quod.
+          </p>
+          <!-- social -->
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-box">
+          <strong>Liens Principaux</strong>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Compte</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- bottom -->
+      <div class="footer-botom">
+        <span class="footer-owner">Made By Ndeye Khary Niang </span>
+        <span class="copyright">© Copyright 2025 - NKN </span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navToggle = document.createElement("div");
+        navToggle.classList.add("nav-toggle");
+        navToggle.innerHTML = "&#9776;";
+        document.querySelector(".navigation").appendChild(navToggle);
+
+        navToggle.addEventListener("click", function () {
+          const navUl = document.querySelector(".navigation ul");
+          navUl.classList.toggle("active");
+        });
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
